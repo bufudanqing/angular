@@ -1,0 +1,9 @@
+*ngFor 是一个 Angular 的复写器（repeater）指令。 它会为列表中的每项数据复写它的宿主元素。
+
+在这个例子中
+
+<li> 就是 *ngFor 的宿主元素
+
+heroes 就是来自 HeroesComponent 类的列表。
+
+当依次遍历这个列表时，hero 会为每个迭代保存当前的英雄对象。
