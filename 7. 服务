@@ -18,3 +18,15 @@ MessagesComponent 中，它会显示其中的消息。
 在要求 Angular 把 HeroService 注入到 HeroesComponent 之前，你必须先把这个服务提供给依赖注入系统。稍后你就要这么做。
 
 有很多途径可以提供 HeroService：在 HeroesComponent 中、在 AppComponent 中，或在 AppModule 中。 每个选项都各有优缺点。
+
+这节课选择在 AppModule 中提供它。
+
+这是一个常用的选择，因此你可以通过 --module=app 选项让 CLI 自动把它提供给 AppModule。
+
+ng generate service hero --module=app
+
+
+==========================================
+让构造函数保持简单，只做初始化操作，比如把构造函数的参数赋值给属性。 构造函数不应该做任何事。 它肯定不能调用某个函数来向远端服务（比如真实的数据服务）发起 HTTP 请求。
+
+你应该改为在 ngOnInit 生命周期钩子中调用 getHeroes()，并且等 Angular 构造出 HeroesComponent 的实例之后，找个恰当的时机调用 ngOnInit。
