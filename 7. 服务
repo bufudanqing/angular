@@ -11,3 +11,10 @@ MessagesComponent 中，它会显示其中的消息。
 ================================
 依赖注入：
 依赖注入（DI）是用来创建对象及其依赖的其它对象的一种方式。 当依赖注入系统创建某个对象实例时，会负责提供该对象所依赖的对象（称为该对象的依赖）。
+
+
+=======================================
+提供（provide） HeroService
+在要求 Angular 把 HeroService 注入到 HeroesComponent 之前，你必须先把这个服务提供给依赖注入系统。稍后你就要这么做。
+
+有很多途径可以提供 HeroService：在 HeroesComponent 中、在 AppComponent 中，或在 AppModule 中。 每个选项都各有优缺点。
