@@ -1,0 +1,29 @@
+Angular 的最佳实践之一就是在一个独立的顶级模块中加载和配置路由器，它专注于路由功能，然后由根模块 AppModule 导入它。
+
+按照惯例，这个模块类的名字叫做 APPRoutingModule，并且位于 src/app 下的 app-routing.module.ts 文件中。
+
+使用 CLI 生成它。
+
+==============================
+添加路由定义
+路由定义 会告诉路由器，当用户点击某个链接或者在浏览器地址栏中输入某个 URL 时，要显示哪个视图。
+
+典型的 Angular 路由（Route）有两个属性：
+
+path：一个用于匹配浏览器地址栏中 URL 的字符串。
+
+component：当导航到此路由时，路由器应该创建哪个组件。
+
+如果你希望当 URL 为 localhost:4200/heroes 时，就导航到 HeroesComponent。
+
+首先要导入 HeroesComponent，以便能在 Route 中引用它。 然后定义一个路由数组，其中的某个路由是指向这个组件的。
+
+======================================================================
+
+RouterModule.forRoot()
+你必须首先初始化路由器，并让它开始监听浏览器中的地址变化。
+
+把 RouterModule 添加到 @NgModule.imports 数组中，并用 routes 来配置它。你只要调用 imports 数组中的 RouterModule.forRoot() 函数就行了。
+
+这个方法之所以叫 forRoot()，是因为你要在应用的顶级配置这个路由器。 forRoot() 方法会提供路由所需的服务提供商和指令，还会基于浏览器的当前 URL 执行首次导航。
+
