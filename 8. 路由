@@ -27,3 +27,33 @@ RouterModule.forRoot()
 
 这个方法之所以叫 forRoot()，是因为你要在应用的顶级配置这个路由器。 forRoot() 方法会提供路由所需的服务提供商和指令，还会基于浏览器的当前 URL 执行首次导航。
 
+======================================================
+
+HeroDetailComponent 需要从一种新的途径获取要显示的英雄。
+
+获取创建本组件的路由，
+
+从这个路由中提取出 id
+
+通过 HeroService 从服务器上获取具有这个 id 的英雄数据。
+
+src/app/hero-detail/hero-detail.component.ts
+
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { HeroService }  from '../hero.service';
+
+然后把 ActivatedRoute、HeroService 和 Location 服务注入到构造函数中，将它们的值保存到私有变量里：
+
+constructor(
+  private route: ActivatedRoute,
+  private heroService: HeroService,
+  private location: Location
+) {}
+
+ActivatedRoute 保存着到这个 HeroDetailComponent 实例的路由信息。 这个组件对从 URL 中提取的路由参数感兴趣。 其中的 id 参数就是要现实的英雄的 id。
+
+HeroService 从远端服务器获取英雄数据，本组件将使用它来获取要显示的英雄。
+
+location 是一个 Angular 的服务，用来与浏览器打交道。 稍后，你就会使用它来导航回上一个视图。
